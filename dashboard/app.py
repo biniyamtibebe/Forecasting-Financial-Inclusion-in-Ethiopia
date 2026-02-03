@@ -87,3 +87,27 @@ chart_df = pd.concat([
 ])
 
 st.line_chart(chart_df, x="year", y="rate", color="type")
+
+st.header("📌 Key Insights")
+
+latest = df[
+    (df["indicator_code"]=="ACC_OWNERSHIP") &
+    (df["gender"].isna())
+].sort_values("year").iloc[-1]
+
+st.metric(
+    label="Latest Account Ownership",
+    value=f"{latest['value_numeric']:.1f}%",
+    delta=f"{latest['value_numeric'] - df['value_numeric'].mean():.1f} vs avg"
+)
+st.header("🔮 Scenario Explorer")
+
+growth_adjustment = st.slider(
+    "Adjust annual growth rate (%)",
+    -2.0, 2.0, 0.0, 0.1
+)
+
+fc = forecast_with_uncertainty(df, "ACC_OWNERSHIP", horizon=3)
+fc["scenario"] = fc["forecast"] + growth_adjustment
+
+st.line_chart(fc, x="year", y=["forecast", "scenario"])

@@ -164,9 +164,22 @@ These limitations are explicitly documented and reflected in the methodology.
 
 ---
 
+## Decision Context
+
+This project is designed to support policymakers, regulators, and development partners in answering:
+
+- How has financial inclusion evolved in Ethiopia over time?
+- Which inclusion pillars (access, usage, infrastructure) show structural improvement?
+- How might inclusion evolve in the next 3–5 years under trend continuation?
+- How do major policy or macro events align with observed changes?
+
+The outputs are descriptive and forward-looking, not causal, and are intended to
+support strategic planning rather than impact attribution.
+
+----
+
 ## 📬 Notes
 
 This project is designed to be extensible. As more indicators or impact links become available, the pipeline can incorporate them with minimal changes.
 ```
 
-T
