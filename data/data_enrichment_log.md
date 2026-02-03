@@ -2,6 +2,14 @@
 ## Overview
 This log tracks all additions/corrections to the starter dataset. Provenance includes source verification, confidence assessment, and business rationale. Collected by: Bemnet. Collection date: 2026-01-30 to 2026-02-02.
 
+| indicator_code  | indicator                | source     |
+| --------------- | ------------------------ | ---------- |
+| ENB_SMARTPHONE  | Smartphone penetration % | GSMA       |
+| ENB_4G_COVERAGE | 4G population coverage % | ITU        |
+| ENB_ELECTRICITY | Electricity access %     | World Bank |
+| ENB_DIGITAL_ID  | Fayda rollout milestone  | GoE        |
+
+
 ## Log Entries
 ### Entry 1: ID=ENR_001, Type=Addition, Date=2026-01-30
 - Record: REC_0031 (observation, pillar=ACCESS, indicator_code=ACC_OWNERSHIP, value=48.8%, 2024)
