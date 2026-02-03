@@ -1,32 +1,22 @@
 # src/forecasting.py
 
-import numpy as np
 import pandas as pd
-from sklearn.linear_model import LinearRegression
+import numpy as np
 
+def forecast_indicator(df, indicator_code, horizon):
+    # Check the fiscal_year column
+    if 'fiscal_year' not in df.columns:
+        raise KeyError("The DataFrame must contain a 'fiscal_year' column.")
+    
+    # Convert fiscal_year to numeric and drop NaN
+    df['fiscal_year'] = pd.to_numeric(df['fiscal_year'], errors='coerce')
+    df.dropna(subset=['fiscal_year'], inplace=True)
 
-def trend_forecast(series: pd.Series, start_year: int, end_year: int):
-    """
-    Linear trend forecast with confidence bands.
-    """
-    y = series.values
-    X = series.index.values.reshape(-1, 1)
+    # Simulated forecast values
+    forecast_years = df['fiscal_year'].max() + np.arange(1, horizon + 1)
+    forecast_values = np.random.rand(horizon) * 100  # Example data for demonstration
 
-    model = LinearRegression()
-    model.fit(X, y)
-
-    years = np.arange(start_year, end_year + 1)
-    preds = model.predict(years.reshape(-1, 1))
-
-    return pd.Series(preds, index=years)
-
-
-def scenario_forecast(base_forecast, scenario="base"):
-    """
-    Simple scenario adjustments.
-    """
-    if scenario == "optimistic":
-        return base_forecast * 1.05
-    if scenario == "pessimistic":
-        return base_forecast * 0.95
-    return base_forecast
+    return pd.DataFrame({
+        'fiscal_year': forecast_years,
+        'forecast': forecast_values
+    })
